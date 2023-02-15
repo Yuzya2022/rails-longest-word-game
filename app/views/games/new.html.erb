@@ -1,0 +1,18 @@
+<%# <ul> %>
+<h1>New Game</h1>
+<div class="letters">
+  <% @letters.each do |letter| %>
+    <button style="display: inline; background-color:blue; color: white;"><%=letter.capitalize %></button>
+  <% end %>
+</div>
+<%# </ul> %>
+<br>
+<h3>What is the longest word you can find?</h3>
+<form action="/score" method="POST" data-turbo="false">
+  <!-- ... -->
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+  <input type="text" name="member">
+  <input type="submit" value="Play!">
+
+</form>
